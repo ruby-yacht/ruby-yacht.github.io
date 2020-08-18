@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- $Id: htmldump.tmpl,v 1.1 2002/08/27 22:00:04 rurban Exp $ -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="home" title="HomePage" href="HomePage" />
+<link rel="help" title="HowToUseWiki" href="HowToUseWiki" />
+<link rel="copyright" title="GNU General Public License" href="http://www.gnu.org/copyleft/gpl.html#SEC1" />
+<link rel="author" title="The PhpWiki Programming Team" href="http://phpwiki.sourceforge.net/phpwiki/ThePhpWikiProgrammingTeam" />
+
+<link rel="stylesheet" title="PhpWiki" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki.css" /><link rel="alternate stylesheet" title="Printer" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-printer.css" media="print, screen" /><link rel="alternate stylesheet" title="Top &amp; bottom toolbars" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-topbottombars.css" /><link rel="alternate stylesheet" title="Modern" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-modern.css" /><title>MathmosWiki - Magic Php Wiki URLs</title>
+</head>
+<!-- Begin body -->
+<!-- $Id: body.tmpl,v 1.30 2002/09/02 14:36:58 rurban Exp $ -->
+<body>
+<!-- Begin top -->
+<!-- $Id: top.tmpl,v 1.20 2002/12/15 01:30:47 carstenklapp Exp $ -->
+<div id="navbar" class="toolbar">
+<!-- The logo -->
+<div align="right" id="logo"><a class="wikilink" 
+                  href="HomePage" target="_top"
+                  ><img src="/phpwiki/themes/default/images/logo.png"
+                        border="0" alt="MathmosWiki: HomePage"
+                        align="right" /></a></div>
+
+<!-- Page title -->
+<h1>Magic Php Wiki URLs</h1>
+</div>
+<!-- End top -->
+<!-- Begin browse -->
+<!-- $Id: browse.tmpl,v 1.22 2002/02/19 23:00:26 carstenklapp Exp $ -->
+
+
+<div class="wikitext"><h2>About phpwiki: URLs</h2>
+<p>A special type of URL is available for making links to perform
+administrative and other special functions in <a href="PhpWiki.html" class="wiki">PhpWiki</a>.  Here is a
+brief description of how they work.</p>
+<p>The basic syntax of a phpwiki: URL is</p>
+<pre>
+<strong>phpwiki:</strong><em>pagename</em><strong>?</strong><em>query-args</em></pre>
+<p>If <i>pagename</i> is omitted it defaults to the current page.</p>
+<p><i>Query-args</i> should be a set of parameters in standard HTTP GET
+format.</p>
+<p>The "action=<em>x</em>" parameter should almost always be given.  It can be one of
+<strong>browse</strong>, <strong>diff</strong>, <strong>edit</strong>, <strong>viewsource</strong>,
+<strong>zip</strong>, <strong>dumpserial</strong>, <strong>loadserial</strong>,
+<strong>remove</strong>, <strong>lock</strong>, <strong>unlock</strong>,
+<strong>login</strong>, <strong>logout</strong>, <strong>setprefs</strong> or <strong>save</strong>.
+The default action is <strong>browse</strong>.</p>
+<p>Some of the actions accept other parameters.</p>
+<dl>
+<dt><strong><a href="FullTextSearch.html" class="wiki">FullTextSearch</a></strong>, <strong><a href="TitleSearch.html" class="wiki">TitleSearch</a></strong></dt>
+<dd><p>Accepts <strong>s</strong>=search term, and <strong>size</strong>=input size.</p>
+</dd>
+<dt><strong>edit</strong></dt>
+<dd><p>Accepts <strong>version</strong>.</p>
+</dd>
+<dt><strong>remove</strong></dt>
+<dd><p>Accepts <strong>verify</strong>.</p>
+</dd>
+<dt><strong>save</strong></dt>
+<dd><p>Accepts <strong>editversion</strong>, <strong>minor_edit</strong>, and  <strong>content</strong>.</p>
+</dd>
+<dt><strong>setprefs</strong></dt>
+<dd><p>Accepts <strong>edit_area_width</strong>, <strong>edit_area_height</strong>.</p>
+</dd>
+</dl>
+<h3>Writing Magic Links in Wiki Pages</h3>
+<p>A magic link looks like:</p>
+<pre>
+<strong>[</strong> <em>text</em> <strong>|</strong> <em>phpwiki-url</em> <strong>]</strong></pre>
+<p>The "<em>text</em> <b>|</b>" is optional but usually recommended.  If given it
+will provide the label for the link.</p>
+<p>The <i>phpwiki-url</i> is a <b>phpwiki:</b> URL as described above.</p>
+<h4>Some examples</h4>
+<pre>
+[ Edit the SandBox | phpwiki:SandBox?action=edit ]</pre>
+<p>will generate a link which will take you directly to editing the
+<a href="SandBox.html" class="wiki">SandBox</a>, like so: <a href="SandBox?action=edit" class="wikiaction">Edit the SandBox</a>.</p>
+<p>Other possibilites:</p>
+<ul>
+<li><a href="SandBox?action=diff" class="wikiaction">Diff the SandBox</a>,</li>
+<li><a href="HomePage?action=lock" class="wikiadmin">Lock the HomePage</a>,</li>
+<li><a href="PhpWikiAdministration?action=zip&amp;include=all" class="wikiadmin">Get a Full Zip Dump</a>,</li>
+<li>Search for <a href="PhpWikiAdministration?action=TitleSearch&amp;s=wiki" class="wikiaction">Page titles containing 'wiki'</a></li>
+</ul>
+<h3>Writing Magic Forms in Wiki Pages</h3>
+<p><em><strong>Note</strong>: The old syntax for Magic forms is no longer supported.
+They are superseded by <tt>&lt;?plugin-form&gt;</tt>.</em></p>
+<p>If the plugin is called using <b>&lt;?plugin-form</b> instead of <b>&lt;?plugin</b>
+and the plugin supports searching, then it will be rendered as a form.</p>
+<dl>
+<dt><em>size</em></dt>
+<dd><p>If given, specifies the size of the input area.</p>
+</dd>
+<dt><em>s</em></dt>
+<dd><p>Specifies the default value for the input.</p>
+</dd>
+</dl>
+<h4>Examples:</h4>
+<p>A search plugin invoked with <b>&lt;?plugin</b> instead of <b>&lt;?plugin-form</b>
+simply inserts the search results of the plugin:</p>
+<pre>
+&lt;?plugin TitleSearch s=wiki noheader=true ?&gt;</pre>
+<p>Search results for Page titles containing 'wiki':</p>
+<div class="plugin"><ul class="pagelist">
+<li class="evenrow"><a href="HowToUseWiki.html" class="wiki">HowToUseWiki</a></li>
+<li class="evenrow"><a href="InterWiki.html" class="wiki">InterWiki</a></li>
+<li class="evenrow"><a href="InterWikiMap.html" class="wiki">InterWikiMap</a></li>
+<li class="oddrow"><a href="MagicPhpWikiURLs.html" class="wiki">MagicPhpWikiURLs</a></li>
+<li class="oddrow"><a href="PhpWiki.html" class="wiki">PhpWiki</a></li>
+<li class="oddrow"><a href="PhpWikiAdministration.html" class="wiki">PhpWikiAdministration</a></li>
+<li class="evenrow"><a href="PhpWikiAdministration%2FRemove.html" class="wiki">PhpWikiAdministration/Remove</a></li>
+<li class="evenrow"><a href="PhpWikiDocumentation.html" class="wiki">PhpWikiDocumentation</a></li>
+<li class="evenrow"><a href="WhyWiki.html" class="wiki">WhyWiki</a></li>
+<li class="oddrow"><a href="WikiInfo.html" class="wiki">WikiInfo</a></li>
+<li class="oddrow"><a href="WikiPlugin.html" class="wiki">WikiPlugin</a></li>
+<li class="oddrow"><a href="WikiWikiWeb.html" class="wiki">WikiWikiWeb</a></li>
+</ul>
+</div>
+<pre>
+&lt;?plugin-form FullTextSearch ?&gt;</pre>
+<p>gives</p>
+<div class="plugin"><form action="FullTextSearch" method="get" class="wikiaction" accept-charset="iso-8859-1">
+<div class="wikiaction"><input name="s" value="" type="text" size="30" title="Full Text Search" onmouseover="window.status=&quot;Full Text Search&quot;; return true;" onmouseout="window.status='';return true;" /><input type="submit" class="button" value="FullTextSearch" /></div>
+</form>
+</div>
+<p>While</p>
+<pre>
+&lt;?plugin-form TitleSearch formsize=12 ?&gt;</pre>
+<p>yields</p>
+<div class="plugin"><form action="TitleSearch" method="get" class="wikiaction" accept-charset="iso-8859-1">
+<div class="wikiaction"><input name="s" value="" type="text" size="12" title="Title Search" onmouseover="window.status=&quot;Title Search&quot;; return true;" onmouseout="window.status='';return true;" /><input type="submit" class="button" value="TitleSearch" /></div>
+</form>
+</div>
+<hr /><p><a href="PhpWikiDocumentation.html" class="wiki">PhpWikiDocumentation</a></p>
+</div>
+
+<div id="actionbar" class="toolbar">
+<hr class="printer" noshade="noshade" />
+<p class="editdate">Last edited on May 9, 2003 12:24 pm.</p>
+<!-- RELATEDPAGES were here. -->
+</div>
+<!-- End browse -->
+<!-- Begin bottom -->
+<!-- $Id: bottom.tmpl,v 1.3 2002/09/15 20:21:16 rurban Exp $ -->
+<!-- Add your Disclaimer here -->
+<div class="errors"><h4>PHP Warnings</h4>
+<div class="error"><p>lib/ziplib.php:308: Notice[8]: Undefined variable:  os_type</p>
+</div>
+</div>
+<!-- End bottom -->
+</body>
+<!-- End body -->
+<!-- phpwiki source:
+$Id: prepend.php,v 1.13 2002/09/18 19:23:25 dairiki Exp $
+$Id: ErrorManager.php,v 1.16 2002/09/14 22:23:36 dairiki Exp $
+$Id: HtmlElement.php,v 1.27 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: XmlElement.php,v 1.17 2002/08/17 15:52:51 rurban Exp $
+$Id: WikiCallback.php,v 1.2 2001/11/21 20:01:52 dairiki Exp $
+$Id: configurator.php,v 1.9 2002/09/15 17:28:27 rurban Exp $
+$Id: main.php,v 1.90 2002/11/19 07:07:37 carstenklapp Exp $
+$Id: config.php,v 1.68 2002/11/14 22:28:03 carstenklapp Exp $
+$Id: FileFinder.php,v 1.11 2002/09/18 18:34:13 dairiki Exp $
+$Id: Request.php,v 1.24 2002/12/14 16:21:46 dairiki Exp $
+$Id: WikiUser.php,v 1.29 2002/11/19 07:07:38 carstenklapp Exp $
+$Id: WikiDB.php,v 1.17 2002/09/15 03:56:22 dairiki Exp $
+$Id: SQL.php,v 1.2 2001/09/19 03:24:36 wainstead Exp $
+$Id: mysql.php,v 1.3 2001/12/08 16:02:35 dairiki Exp $
+$Id: PearDB.php,v 1.28 2002/09/12 11:45:33 rurban Exp $
+$Id: backend.php,v 1.3 2002/01/10 23:32:04 carstenklapp Exp $
+$Id: DB.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: DB.php,v 1.13 2002/07/02 15:19:49 cox Exp
+$Id: PEAR.php,v 1.1 2002/01/28 04:01:56 dairiki Exp $
+From Pear CVS: Id: PEAR.php,v 1.29 2001/12/15 15:01:35 mj Exp
+$Id: mysql.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: mysql.php,v 1.5 2002/06/19 00:41:06 cox Exp
+$Id: common.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: common.php,v 1.8 2002/06/12 15:03:16 fab Exp
+$Id: themeinfo.php,v 1.24 2002/08/27 21:51:31 rurban Exp $
+$Id: Theme.php,v 1.58 2002/10/12 08:55:03 carstenklapp Exp $
+$Id: loadsave.php,v 1.70 2002/09/18 18:34:13 dairiki Exp $
+$Id: ziplib.php,v 1.27 2002/02/20 17:27:51 dairiki Exp $
+$Id: Template.php,v 1.46 2002/09/15 15:05:47 rurban Exp $
+$Id: WikiPlugin.php,v 1.27 2002/11/04 03:15:59 carstenklapp Exp $
+$Id: PageType.php,v 1.13 2002/09/04 20:39:47 dairiki Exp $
+$Id: BlockParser.php,v 1.29 2002/11/25 22:25:49 dairiki Exp $
+$Id: InlineParser.php,v 1.19 2002/11/25 22:51:37 dairiki Exp $
+$Id: interwiki.php,v 1.23 2002/10/06 16:45:10 dairiki Exp $
+$Id: AllPages.php,v 1.14 2002/09/09 08:38:19 rurban Exp $
+$Id: PageList.php,v 1.42 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: AllUsers.php,v 1.3 2002/09/09 08:38:19 rurban Exp $
+$Id: PageGroup.php,v 1.4 2002/02/16 02:08:26 carstenklapp Exp $
+$Id: BackLinks.php,v 1.18 2002/01/31 01:14:14 dairiki Exp $
+$Id: Calendar.php,v 1.25 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: TitleSearch.php,v 1.16 2002/08/22 23:32:33 rurban Exp $
+$Id: TextSearchQuery.php,v 1.5 2002/11/19 19:08:14 dairiki Exp $
+$Id: _BackendInfo.php,v 1.19 2002/10/31 03:28:31 carstenklapp Exp $
+$Id: ExternalSearch.php,v 1.2 2002/02/28 01:01:14 carstenklapp Exp $
+$Id: FullTextSearch.php,v 1.14 2002/03/01 17:03:11 carstenklapp Exp $
+$Id: FuzzyPages.php,v 1.8 2002/08/20 18:26:12 rurban Exp $
+$Id: RecentChanges.php,v 1.68 2002/10/30 23:14:28 dairiki Exp $
+$Id: IncludePage.php,v 1.19 2002/03/02 05:40:33 carstenklapp Exp $
+$Id: LikePages.php,v 1.17 2002/01/31 01:14:14 dairiki Exp $
+-->
+</html>

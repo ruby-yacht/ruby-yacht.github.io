@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- $Id: htmldump.tmpl,v 1.1 2002/08/27 22:00:04 rurban Exp $ -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="home" title="HomePage" href="HomePage" />
+<link rel="help" title="HowToUseWiki" href="HowToUseWiki" />
+<link rel="copyright" title="GNU General Public License" href="http://www.gnu.org/copyleft/gpl.html#SEC1" />
+<link rel="author" title="The PhpWiki Programming Team" href="http://phpwiki.sourceforge.net/phpwiki/ThePhpWikiProgrammingTeam" />
+
+<link rel="stylesheet" title="PhpWiki" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki.css" /><link rel="alternate stylesheet" title="Printer" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-printer.css" media="print, screen" /><link rel="alternate stylesheet" title="Top &amp; bottom toolbars" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-topbottombars.css" /><link rel="alternate stylesheet" title="Modern" type="text/css" charset="iso-8859-1" href="/phpwiki/themes/default/phpwiki-modern.css" /><title>MathmosWiki - Text Formatting Rules</title>
+</head>
+<!-- Begin body -->
+<!-- $Id: body.tmpl,v 1.30 2002/09/02 14:36:58 rurban Exp $ -->
+<body>
+<!-- Begin top -->
+<!-- $Id: top.tmpl,v 1.20 2002/12/15 01:30:47 carstenklapp Exp $ -->
+<div id="navbar" class="toolbar">
+<!-- The logo -->
+<div align="right" id="logo"><a class="wikilink" 
+                  href="HomePage" target="_top"
+                  ><img src="/phpwiki/themes/default/images/logo.png"
+                        border="0" alt="MathmosWiki: HomePage"
+                        align="right" /></a></div>
+
+<!-- Page title -->
+<h1>Text Formatting Rules</h1>
+</div>
+<!-- End top -->
+<!-- Begin browse -->
+<!-- $Id: browse.tmpl,v 1.22 2002/02/19 23:00:26 carstenklapp Exp $ -->
+
+
+<div class="wikitext"><h4>Synopsis</h4>
+<p><a href="TextFormattingRules.html" class="wiki">TextFormattingRules</a></p>
+<p><b>Emphasis:</b> <tt>_</tt> for <i>italics</i>, <tt>*</tt> for <b>bold</b>,
+<tt>_*</tt> for <i><b>both</b></i>, <tt>=</tt> for <tt>fixed width</tt>.<br />
+<b>Lists:</b> <tt>*</tt> for bullet lists, <tt>#</tt> for numbered lists,
+<i>Term<b>:</b>&lt;new-line&gt; definition</i> for definition lists.<br />
+<b>Preformatted text:</b> Enclose text in <tt>&lt;pre&gt;&lt;/pre&gt;</tt> or
+<tt>&lt;verbatim&gt;&lt;/verbatim&gt;</tt>.<br />
+<b>Indented text:</b> Indent the paragraph with whitespaces.<br />
+<b>References:</b> JoinCapitalizedWords or use square brackets for a
+<tt>[page link]</tt> or URL <tt>[http://cool.wiki.int/]</tt>.<br />
+<b>Preventing linking:</b> Prefix with "<tt>~</tt>":
+<tt>~DoNotHyperlink</tt>, name links like <tt>[text | URL]</tt>.<br />
+<b>Misc:</b> "<tt>!</tt>", "<tt>!!</tt>", "<tt>!!!</tt>" make headings,
+"<tt>%%%</tt>" or "<tt>&lt;br&gt;</tt>" makes a linebreak,
+"<tt>----</tt>" makes a horizontal rule.<br />
+<b>Allowed HTML tags:</b> <b>b</b> <big>big</big> <i>i</i>
+<small>small</small> <tt>tt</tt> <em>em</em> <strong>strong</strong>
+<abbr>abbr</abbr> <acronym>acronym</acronym> <cite>cite</cite>
+<code>code</code> <dfn>dfn</dfn> <kbd>kbd</kbd> <samp>samp</samp>
+<var>var</var> <sup>sup</sup> <sub>sub</sub></p>
+<hr /><h2>Paragraphs</h2>
+<ul>
+<li>Don't indent paragraphs</li>
+<li>Words wrap and fill as needed</li>
+<li>Use blank lines as separators</li>
+<li>Four or more minus signs make a horizontal rule</li>
+<li><tt>%%%</tt> or <tt>&lt;br&gt;</tt> makes a linebreak (in headings and lists too)</li>
+</ul>
+<h2>Lists</h2>
+<ul>
+<li>asterisk for first level<ul>
+<li>indented asterisk (indent at least two spaces) for second level, etc.</li>
+</ul>
+</li>
+<li>Use <tt>*</tt>, <tt>-</tt>, <tt>+</tt> or <tt>o</tt> for bullet
+lists, <tt>#</tt> for numbered lists (mix at will)</li>
+<li>Definition lists:<pre>
+Term:
+  definition</pre>
+gives<dl>
+<dt>Term</dt>
+<dd>definition</dd>
+</dl>
+as in the <tt>&lt;DL&gt;&lt;DT&gt;&lt;DD&gt;</tt> list</li>
+<li>Items may contain multiple paragraphs and other multi-lined content,
+just indent the items</li>
+</ul>
+<h2>Headings</h2>
+<ul>
+<li>'=!=' at the start of a line makes a small heading</li>
+<li>'=!!=' at the start of a line makes a medium heading</li>
+<li>'=!!!=' at the start of a line makes a large heading</li>
+</ul>
+<h2>Preformatted text</h2>
+<ul>
+<li>Place preformatted lines inside <tt>&lt;pre&gt;</tt>:<pre>
+&lt;pre&gt;
+Preformatted text. WikiLinks still work.
+&lt;/pre&gt;</pre>
+gives<pre>
+Preformatted text. <span class="wikiunknown"><a href="WikiLinks?action=edit" title="Edit: WikiLinks" onmouseover="window.status=&quot;Edit: WikiLinks&quot;; return true;" onmouseout="window.status='';return true;">?</a><u>WikiLinks</u></span> still work.</pre>
+</li>
+<li>If you want text with no Wiki interaction, use the <tt>&lt;verbatim&gt;</tt> tag:<pre>
+&lt;verbatim&gt;
+Preformatted text. WikiLinks do not work.
+&lt;/verbatim&gt;</pre>
+gives<pre>
+Preformatted text. WikiLinks do not work.</pre>
+</li>
+</ul>
+<h2>Indented Paragraphs</h2>
+<ul>
+<li><p>Two or more whitespaces signal indented text. Indents may be nested.</p>
+<blockquote>
+<p>This is an indented block of text.</p>
+<blockquote>
+<p>This block is even more indented.</p>
+</blockquote>
+</blockquote>
+</li>
+<li><p>E-mail style block-quoting is supported as well:</p>
+<pre>
+&gt; This is block-quoted text.</pre>
+<p>renders as</p>
+<blockquote style="border-left-width: medium; border-left-color: #0f0; border-left-style: ridge; padding-left: 1em; margin-left: 0em; margin-right: 0em;">
+<p>This is block-quoted text.</p>
+</blockquote>
+</li>
+</ul>
+<h2>Emphasis</h2>
+<ul>
+<li><p>Use an underscore (<tt>_</tt>) for emphasis (usually <i>italics</i>)</p>
+</li>
+<li><p>Use an asterisk (<tt>*</tt>) for strong emphasis (usually <b>bold</b>)</p>
+</li>
+<li><p>Mix them at will: <b><i>bold italics</i></b></p>
+</li>
+<li><p><i>Emphasis</i> can be used <i>multiple</i> times within a paragraph, but
+<i>cannot</i> cross paragraph boundaries:</p>
+<p>_this</p>
+<p>will not work_</p>
+</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li>Hyperlinks to other pages within the Wiki are made by placing the
+page name in square brackets: <span class="wikiunknown"><a href="this%20is%20a%20page%20link?action=edit" title="Edit: this is a page link" onmouseover="window.status=&quot;Edit: this is a page link&quot;; return true;" onmouseout="window.status='';return true;">?</a><u>this is a page link</u></span> or
+<span class="wikiunknown"><a href="UsingWikiWords?action=edit" title="Edit: UsingWikiWords" onmouseover="window.status=&quot;Edit: UsingWikiWords&quot;; return true;" onmouseout="window.status='';return true;">?</a><u>UsingWikiWords</u></span> (preferred)</li>
+<li>Hyperlinks to external pages are done like this:
+<a href="http://www.wcsb.org/" class="namedurl"><span style="white-space: nowrap"><img src="/phpwiki/themes/default/images/http.png" alt="http" class="linkicon" border="0" />http://www.wcsb.org/</span></a></li>
+<li>You can name the links by providing a name, a bar (|) and then the
+hyperlink or pagename:
+<a href="http://phpwiki.sourceforge.net/" class="namedurl"><span style="white-space: nowrap"><img src="/phpwiki/themes/default/images/http.png" alt="http" class="linkicon" border="0" />PhpWiki</span> home page</a> ---
+<a href="HomePage.html" class="named-wiki" title="HomePage">the front page</a></li>
+<li>You can suppress linking to old-style references and URIs by
+preceding the word with a '<tt>~</tt>', e.g. NotLinkedAsWikiName,
+http://not.linked.to/</li>
+<li>Also, the old way of linking URL's is still supported: precede URLs
+with "<tt>http:</tt>", "<tt>ftp:</tt>" or "<tt>mailto:</tt>" to
+create links automatically as in: <a href="http://c2.com/" class="namedurl"><span style="white-space: nowrap"><img src="/phpwiki/themes/default/images/http.png" alt="http" class="linkicon" border="0" />http://c2.com/</span></a></li>
+<li>URLs ending with <tt>.png</tt>, <tt>.gif</tt>, or <tt>.jpg</tt> are inlined if in square
+brackets, by themselves:
+<img src="http://phpwiki.sourceforge.net/demo/themes/default/images/png.png" alt="http://phpwiki.sourceforge.net/demo/themes/default/images/png.png" class="inlineimage" /></li>
+<li>In-page <a name="hyperlinks" id="hyperlinks">hyperlinks</a> are made by placing a named anchor and
+referring to the anchor in a hyperlink:<ul>
+<li>Named anchors:<ul>
+<li><tt>#[foo]</tt>: An anchor around the text "foo" with id
+"foo".</li>
+<li><tt>#[|foo]</tt>: An empty anchor with id "foo".</li>
+<li><tt>#[howdy|foo]</tt>: An anchor around the text "howdy" with
+id "foo".</li>
+</ul>
+</li>
+<li>References to name anchors are made thusly:<br />
+<tt>[#<a href="PhpWikiAdministration%23hyperlinks.html" class="wiki">#hyperlinks</a>]</tt>, <tt>[OtherPage#foo]</tt>,
+<tt>[named|OtherPage#foo]</tt>.</li>
+</ul>
+</li>
+</ul>
+<h2>Tables</h2>
+<ul>
+<li><p>Definition list style tables are written just like definition lists,
+except that you replace the trailing colon on the term with a "pipe"
+(<tt>|</tt>).</p>
+<pre>
+Term 1 |
+   Definition 1 begins here.
+   Term 1.1 |
+      Definition 1.1
+   Term 1.2 |
+      Definition 1.2
+   This is part of definition 1.
+Term 2 |
+   Here's definition 2.</pre>
+<table class="wiki-dl-table" border="2" cellspacing="0" cellpadding="6">
+<tr>
+<th rowspan="4">Term 1</th>
+<td colspan="2"><p>Definition 1 begins here.</p>
+</td>
+</tr>
+<tr>
+<th>Term 1.1</th>
+<td><p>Definition 1.1</p>
+</td>
+</tr>
+<tr>
+<th>Term 1.2</th>
+<td><p>Definition 1.2</p>
+</td>
+</tr>
+<tr>
+<td colspan="2"><p>This is part of definition 1.</p>
+</td>
+</tr>
+<tr>
+<th>Term 2</th>
+<td colspan="2"><p>Here's definition 2.</p>
+</td>
+</tr>
+</table>
+</li>
+<li><p>Old-style tables are supported through the <a href="OldStyleTablePlugin.html" class="wiki">OldStyleTablePlugin</a>:</p>
+</li>
+</ul>
+<h2>HTML Mark-Up Language</h2>
+<ul>
+<li>Some in-line markup is allowed through the use of HTML tags:
+<b>b</b>, <big>big</big>, <i>i</i>, <small>small</small>,
+<tt>tt</tt>, <em>em</em>, <strong>strong</strong>,
+<abbr>abbr</abbr>, <acronym>acronym</acronym>, <cite>cite</cite>,
+<code>code</code>, <dfn>dfn</dfn>, <kbd>kbd</kbd>,
+<samp>samp</samp>, <var>var</var>, <sup>sup</sup> and <sub>sub</sub></li>
+<li>&lt; and &gt; are themselves</li>
+<li>The &amp; characters will not work</li>
+</ul>
+<h2>Creating various kinds of special links</h2>
+<ul>
+<li>See <a href="MagicPhpWikiURLs.html" class="wiki">MagicPhpWikiURLs</a> for gory details on how to write various kind
+of wiki maintenance and other special links.</li>
+</ul>
+<h2>Inserting plugins</h2>
+<ul>
+<li><p>Several plugins permit embedding additional functionality to Wiki
+pages. For example,</p>
+<pre>
+&lt;?plugin BackLinks page=HomePage info=hits ?&gt;</pre>
+<p>gives</p>
+<div class="plugin"><table cellpadding="0" cellspacing="1" border="0" class="pagelist" summary="Columns: Hits, Page Name.">
+<caption align="top">
+7 pages link to <a href="HomePage.html" class="wiki">HomePage</a>:</caption>
+<thead>
+<tr>
+<td align="center"><a href="PhpWikiAdministration?action=ziphtml&amp;sortby=%2Bhits" class="pagetitle" title="Sort by hits">&nbsp;<u>Hits</u>&nbsp;</a></td>
+<td align="center"><a href="PhpWikiAdministration?action=ziphtml&amp;sortby=%2Bpagename" class="pagetitle" title="Sort by pagename">&nbsp;<u>Page Name</u>&nbsp;</a></td>
+</tr>
+</thead>
+<tbody>
+<tr class="evenrow">
+<td align="right">&nbsp;2&nbsp;</td>
+<td>&nbsp;<a href="NewMarkupTestPage.html" class="wiki">NewMarkupTestPage</a>&nbsp;</td>
+</tr>
+<tr class="evenrow">
+<td align="right">&nbsp;0&nbsp;</td>
+<td>&nbsp;<a href="OldMarkupTestPage.html" class="wiki">OldMarkupTestPage</a>&nbsp;</td>
+</tr>
+<tr class="evenrow">
+<td align="right">&nbsp;1&nbsp;</td>
+<td>&nbsp;<a href="OldTextFormattingRules.html" class="wiki">OldTextFormattingRules</a>&nbsp;</td>
+</tr>
+<tr class="oddrow">
+<td align="right">&nbsp;4&nbsp;</td>
+<td>&nbsp;<a href="PgsrcTranslation.html" class="wiki">PgsrcTranslation</a>&nbsp;</td>
+</tr>
+<tr class="oddrow">
+<td align="right">&nbsp;44&nbsp;</td>
+<td>&nbsp;<a href="PhpWikiAdministration.html" class="wiki">PhpWikiAdministration</a>&nbsp;</td>
+</tr>
+<tr class="oddrow">
+<td align="right">&nbsp;8&nbsp;</td>
+<td>&nbsp;<a href="PhpWikiDocumentation.html" class="wiki">PhpWikiDocumentation</a>&nbsp;</td>
+</tr>
+<tr class="evenrow">
+<td align="right">&nbsp;15&nbsp;</td>
+<td>&nbsp;<a href="TextFormattingRules.html" class="wiki">TextFormattingRules</a>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p>For more information on plugins, see <a href="WikiPlugin.html" class="wiki">WikiPlugin</a>.</p>
+</li>
+</ul>
+<hr /><p><a href="PhpWikiDocumentation.html" class="wiki">PhpWikiDocumentation</a></p>
+</div>
+
+<div id="actionbar" class="toolbar">
+<hr class="printer" noshade="noshade" />
+<p class="editdate">Last edited on May 9, 2003 12:24 pm.</p>
+<!-- RELATEDPAGES were here. -->
+</div>
+<!-- End browse -->
+<!-- Begin bottom -->
+<!-- $Id: bottom.tmpl,v 1.3 2002/09/15 20:21:16 rurban Exp $ -->
+<!-- Add your Disclaimer here -->
+<div class="errors"><h4>PHP Warnings</h4>
+<div class="error"><p>lib/ziplib.php:308: Notice[8]: Undefined variable:  os_type</p>
+</div>
+</div>
+<!-- End bottom -->
+</body>
+<!-- End body -->
+<!-- phpwiki source:
+$Id: prepend.php,v 1.13 2002/09/18 19:23:25 dairiki Exp $
+$Id: ErrorManager.php,v 1.16 2002/09/14 22:23:36 dairiki Exp $
+$Id: HtmlElement.php,v 1.27 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: XmlElement.php,v 1.17 2002/08/17 15:52:51 rurban Exp $
+$Id: WikiCallback.php,v 1.2 2001/11/21 20:01:52 dairiki Exp $
+$Id: configurator.php,v 1.9 2002/09/15 17:28:27 rurban Exp $
+$Id: main.php,v 1.90 2002/11/19 07:07:37 carstenklapp Exp $
+$Id: config.php,v 1.68 2002/11/14 22:28:03 carstenklapp Exp $
+$Id: FileFinder.php,v 1.11 2002/09/18 18:34:13 dairiki Exp $
+$Id: Request.php,v 1.24 2002/12/14 16:21:46 dairiki Exp $
+$Id: WikiUser.php,v 1.29 2002/11/19 07:07:38 carstenklapp Exp $
+$Id: WikiDB.php,v 1.17 2002/09/15 03:56:22 dairiki Exp $
+$Id: SQL.php,v 1.2 2001/09/19 03:24:36 wainstead Exp $
+$Id: mysql.php,v 1.3 2001/12/08 16:02:35 dairiki Exp $
+$Id: PearDB.php,v 1.28 2002/09/12 11:45:33 rurban Exp $
+$Id: backend.php,v 1.3 2002/01/10 23:32:04 carstenklapp Exp $
+$Id: DB.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: DB.php,v 1.13 2002/07/02 15:19:49 cox Exp
+$Id: PEAR.php,v 1.1 2002/01/28 04:01:56 dairiki Exp $
+From Pear CVS: Id: PEAR.php,v 1.29 2001/12/15 15:01:35 mj Exp
+$Id: mysql.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: mysql.php,v 1.5 2002/06/19 00:41:06 cox Exp
+$Id: common.php,v 1.2 2002/09/12 11:45:33 rurban Exp $
+From Pear CVS: Id: common.php,v 1.8 2002/06/12 15:03:16 fab Exp
+$Id: themeinfo.php,v 1.24 2002/08/27 21:51:31 rurban Exp $
+$Id: Theme.php,v 1.58 2002/10/12 08:55:03 carstenklapp Exp $
+$Id: loadsave.php,v 1.70 2002/09/18 18:34:13 dairiki Exp $
+$Id: ziplib.php,v 1.27 2002/02/20 17:27:51 dairiki Exp $
+$Id: Template.php,v 1.46 2002/09/15 15:05:47 rurban Exp $
+$Id: WikiPlugin.php,v 1.27 2002/11/04 03:15:59 carstenklapp Exp $
+$Id: PageType.php,v 1.13 2002/09/04 20:39:47 dairiki Exp $
+$Id: BlockParser.php,v 1.29 2002/11/25 22:25:49 dairiki Exp $
+$Id: InlineParser.php,v 1.19 2002/11/25 22:51:37 dairiki Exp $
+$Id: interwiki.php,v 1.23 2002/10/06 16:45:10 dairiki Exp $
+$Id: AllPages.php,v 1.14 2002/09/09 08:38:19 rurban Exp $
+$Id: PageList.php,v 1.42 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: AllUsers.php,v 1.3 2002/09/09 08:38:19 rurban Exp $
+$Id: PageGroup.php,v 1.4 2002/02/16 02:08:26 carstenklapp Exp $
+$Id: BackLinks.php,v 1.18 2002/01/31 01:14:14 dairiki Exp $
+$Id: Calendar.php,v 1.25 2002/10/31 03:28:30 carstenklapp Exp $
+$Id: TitleSearch.php,v 1.16 2002/08/22 23:32:33 rurban Exp $
+$Id: TextSearchQuery.php,v 1.5 2002/11/19 19:08:14 dairiki Exp $
+$Id: _BackendInfo.php,v 1.19 2002/10/31 03:28:31 carstenklapp Exp $
+$Id: ExternalSearch.php,v 1.2 2002/02/28 01:01:14 carstenklapp Exp $
+$Id: FullTextSearch.php,v 1.14 2002/03/01 17:03:11 carstenklapp Exp $
+$Id: FuzzyPages.php,v 1.8 2002/08/20 18:26:12 rurban Exp $
+$Id: RecentChanges.php,v 1.68 2002/10/30 23:14:28 dairiki Exp $
+$Id: IncludePage.php,v 1.19 2002/03/02 05:40:33 carstenklapp Exp $
+$Id: LikePages.php,v 1.17 2002/01/31 01:14:14 dairiki Exp $
+$Id: MostPopular.php,v 1.21 2002/08/27 21:51:31 rurban Exp $
+$Id: OldStyleTable.php,v 1.4 2002/10/31 03:28:31 carstenklapp Exp $
+$Id: OrphanedPages.php,v 1.3 2002/02/26 10:44:30 lakka Exp $
+$Id: PageHistory.php,v 1.22 2002/12/15 01:55:30 carstenklapp Exp $
+$Id: AllRevisionsIter.php,v 1.1 2001/09/18 19:16:23 dairiki Exp $
+$Id: PageInfo.php,v 1.1 2002/10/14 14:43:22 carstenklapp Exp $
+$Id: PhpHighlight.php,v 1.6 2002/11/25 19:53:23 dairiki Exp $
+$Id PhpWeather.php 2002-08-26 15:30:13 rurban$
+$Id: WikiForm.php,v 1.7 2002/08/20 08:37:42 rurban Exp $
+$Id: WikiAdminRemove.php,v 1.4 2002/08/27 21:51:31 rurban Exp $
+$Id: SiteMap.php,v 1.5 2002/11/04 19:17:16 carstenklapp Exp $
+$Id: RandomPage.php,v 1.7 2002/01/31 01:34:02 carstenklapp Exp $
+-->
+</html>
