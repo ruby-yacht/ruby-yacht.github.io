@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" xmlns:lr="http://adobe.com/lrg/0.0"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" xmlns:lr="http://adobe.com/lrg/0.0"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" xmlns:lr="http://adobe.com/lrg/0.0"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" xmlns:lr="http://adobe.com/lrg/0.0"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Lightroom Gallery</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+        <link rel="stylesheet" type="text/css" media="screen" title="Custom Settings" href="assets/css/custom.css" >
+        <script src="assets/js/libs/modernizr.custom.23122.js"></script>
+    </head>
+    <body class="" data-pagination-style="pages" data-pagination-size="30">
+                        <div id="thumbnailContainer">
+            <div class="thumbnails thumbnail-size-sm"></div>
+        </div>
+        <div id="loupeContainer" class="show-corners">
+            <div class="background"></div>
+            <div class="image-container"></div>
+            <div class="side-navigation">
+                <div class="hotspot" id="hotspotPrevLoupe">
+                    <div class="button" id="buttonPrevSideLoupe">
+                        <svg version="1.1" id="svgIconPrevSideLoupe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 57" style="enable-background:new 0 0 30 57;" xml:space="preserve">
+                            <path class="icon custom-colorable" d="M0,0v57c16.56854,0,30-12.75989,30-28.5S16.56854,0,0,0z M17.60291,33.87964
+                                c0.34692,0.3291,0.34998,0.85938,0.00708,1.18457l-1.2431,1.17828c-0.34326,0.32532-0.90277,0.32245-1.24969-0.00647
+                                L9.53137,30.9408L7,28.54163l8.20038-7.77301c0.35333-0.33508,0.92334-0.33801,1.27271-0.00671l1.26569,1.19952
+                                c0.34943,0.3313,0.34613,0.8714-0.00739,1.2063l-5.7149,5.41711L17.60291,33.87964z"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="hotspot" id="hotspotNextLoupe">
+                    <div class="button" id="buttonNextSideLoupe">
+                        <svg version="1.1" id="svgIconNextSideLoupe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 57" style="enable-background:new 0 0 30 57;" xml:space="preserve">
+                            <path class="icon custom-colorable" d="M30,57V0C13.43146,0,0,12.75989,0,28.5S13.43146,57,30,57z M12.39709,23.12036
+                                c-0.34692-0.3291-0.34998-0.85938-0.00708-1.18457l1.2431-1.17828c0.34326-0.32532,0.90277-0.32245,1.24969,0.00647l5.58582,5.29523
+                                L23,28.45837l-8.20038,7.77301c-0.35333,0.33508-0.92334,0.33801-1.27271,0.00671l-1.26569-1.19952
+                                c-0.34943-0.3313-0.34613-0.8714,0.00739-1.2063l5.7149-5.41711L12.39709,23.12036z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="info-container">
+                <div id="loupeMeta"></div>
+                <ul class="lateral-nav">
+                    <li id="buttonPrev">
+                        <svg version="1.1" id="svgIconPrevLoupe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#231F20;}
+                            </style>
+                            <path class="icon custom-colorable" d="M25.20105,14.76864l-8.2004,7.773l2.5314,2.3992l5.5858,5.2952c0.3469,0.3289,0.9064,0.3318,1.2497,0.0065
+                                l1.2431-1.1783c0.3429-0.3252,0.3398-0.8555-0.0071-1.1846l-5.5864-5.2948l5.7149-5.4171c0.3535-0.3349,0.3568-0.875,0.0074-1.2063
+                                l-1.2657-1.1995C26.12435,14.43064,25.55435,14.43354,25.20105,14.76864z"/>
+                        </svg>
+                    </li>
+                    <li class="count"><span id="countCurrent"></span> of <span id="countTotal"></span></li>
+                    <li id="buttonNext">
+                        <svg version="1.1" id="svgIconNextLoupe" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+                            <style type="text/css">
+                                .st0{fill-rule:evenodd;clip-rule:evenodd;fill:#231F20;}
+                            </style>
+                            <path class="icon custom-colorable" d="M19.79895,14.76864l8.2004,7.773l-2.5314,2.3992l-5.5858,5.2952c-0.3469,0.3289-0.9064,0.3318-1.2497,0.0065
+                                l-1.2431-1.1783c-0.3429-0.3252-0.3398-0.8555,0.0071-1.1846l5.5864-5.2948l-5.7149-5.4171
+                                c-0.3535-0.3349-0.3568-0.875-0.0074-1.2063l1.2657-1.1995C18.87565,14.43064,19.44565,14.43354,19.79895,14.76864z"/>
+                        </svg>
+                    </li>
+                </ul>
+            </div>
+            <div id="loupeCloseButton">
+                <svg version="1.1" id="svgIconLoupeClose" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                     viewBox="0 0 45 45" style="enable-background:new 0 0 45 45;" xml:space="preserve">
+                    <path class="shape-x custom-colorable" d="M14.77881,17.30074l5.212,5.2222l-5.0831,5.0924c-0.3476,0.3484-0.5746,0.7624-0.2308,1.1067l1.5682,1.4763
+                        c0.3436,0.3443,0.8045,0.2596,1.1521-0.0886l5.0825-5.093l5.2119,5.222c0.3536,0.3547,0.9244,0.3578,1.2741,0.0073l1.2677-1.27
+                        c0.3497-0.3507,0.3465-0.9224-0.0071-1.2768l-5.2119-5.2221l5.0828-5.0925c0.3475-0.3485,0.5429-0.8259,0.1994-1.1702
+                        l-1.6474-1.4921c-0.3438-0.3443-0.6936-0.1803-1.0411,0.1679l-5.0828,5.0929l-5.212-5.222
+                        c-0.3537-0.3546-0.9241-0.3577-1.2742-0.007l-1.2672,1.2698C14.42171,16.37464,14.42491,16.94624,14.77881,17.30074z"/>
+                </svg>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var LR = LR || {};
+            LR.images = [                                                                                        {"id": "14092", "exportFilename": "img000000000-2", "title": "", "caption" : ""},
+                         {"id": "14093", "exportFilename": "img000000001-2", "title": "", "caption" : ""},
+                         {"id": "14094", "exportFilename": "img000000002-2", "title": "", "caption" : ""},
+                         {"id": "14095", "exportFilename": "img000000003-2", "title": "", "caption" : ""},
+                         {"id": "14096", "exportFilename": "img000000004-2", "title": "", "caption" : ""},
+                         {"id": "14097", "exportFilename": "img000000005-2", "title": "", "caption" : ""},
+                         {"id": "14098", "exportFilename": "img000000006-2", "title": "", "caption" : ""},
+                         {"id": "14099", "exportFilename": "img000000007-2", "title": "", "caption" : ""},
+                         {"id": "14100", "exportFilename": "img000000008-2", "title": "", "caption" : ""},
+                         {"id": "14101", "exportFilename": "img000000009-2", "title": "", "caption" : ""},
+                         {"id": "14102", "exportFilename": "img000000010-2", "title": "", "caption" : ""},
+                         {"id": "14103", "exportFilename": "img000000011-2", "title": "", "caption" : ""},
+                         {"id": "14104", "exportFilename": "img000000012-2", "title": "", "caption" : ""},
+                         {"id": "14105", "exportFilename": "img000000013-2", "title": "", "caption" : ""},
+                         {"id": "14106", "exportFilename": "img000000014-2", "title": "", "caption" : ""},
+                         {"id": "14107", "exportFilename": "img000000015-2", "title": "", "caption" : ""},
+                         {"id": "14108", "exportFilename": "img000000016-2", "title": "", "caption" : ""},
+                         {"id": "14109", "exportFilename": "img000000017-2", "title": "", "caption" : ""},
+                         {"id": "14110", "exportFilename": "img000000018-2", "title": "", "caption" : ""},
+                         {"id": "14111", "exportFilename": "img000000019-2", "title": "", "caption" : ""},
+                         {"id": "14112", "exportFilename": "img000000020-2", "title": "", "caption" : ""},
+                         {"id": "14113", "exportFilename": "img000000021-2", "title": "", "caption" : ""},
+                         {"id": "14114", "exportFilename": "img000000022-2", "title": "", "caption" : ""},
+                         {"id": "14115", "exportFilename": "img000000023-2", "title": "", "caption" : ""},
+                         {"id": "14116", "exportFilename": "img000000024-2", "title": "", "caption" : ""},
+                         {"id": "14117", "exportFilename": "img000000025-2", "title": "", "caption" : ""},
+                         {"id": "14118", "exportFilename": "img000000026-2", "title": "", "caption" : ""},
+                         {"id": "14119", "exportFilename": "img000000027-2", "title": "", "caption" : ""},
+                         {"id": "14120", "exportFilename": "img000000028-2", "title": "", "caption" : ""},
+                         {"id": "14121", "exportFilename": "img000000029-2", "title": "", "caption" : ""},
+                         {"id": "14122", "exportFilename": "img000000030-2", "title": "", "caption" : ""},
+                         {"id": "14123", "exportFilename": "img000000031-2", "title": "", "caption" : ""},
+                         {"id": "14124", "exportFilename": "img000000032-2", "title": "", "caption" : ""},
+                         {"id": "14125", "exportFilename": "img000000033-2", "title": "", "caption" : ""},
+                         {"id": "14126", "exportFilename": "img000000034-2", "title": "", "caption" : ""},
+                         {"id": "14127", "exportFilename": "img000000035-2", "title": "", "caption" : ""},
+                         {"id": "14128", "exportFilename": "img000000036-2", "title": "", "caption" : ""},
+                         {"id": "14129", "exportFilename": "img000000037-2", "title": "", "caption" : ""},
+                         {"id": "14130", "exportFilename": "img000000038-2", "title": "", "caption" : ""},
+                         {"id": "14131", "exportFilename": "img000000039-2", "title": "", "caption" : ""},
+                         {"id": "14132", "exportFilename": "img000000040-2", "title": "", "caption" : ""},
+                         {"id": "14133", "exportFilename": "img000000041-2", "title": "", "caption" : ""},
+                         {"id": "14134", "exportFilename": "img000000042-2", "title": "", "caption" : ""},
+                         {"id": "14135", "exportFilename": "img000000043-2", "title": "", "caption" : ""},
+                         {"id": "14136", "exportFilename": "img000000044-2", "title": "", "caption" : ""},
+                         {"id": "14137", "exportFilename": "img000000045-2", "title": "", "caption" : ""},
+                         {"id": "14138", "exportFilename": "img000000046-2", "title": "", "caption" : ""},
+                         {"id": "14139", "exportFilename": "img000000047-2", "title": "", "caption" : ""},
+                         {"id": "14140", "exportFilename": "img000000048-2", "title": "", "caption" : ""},
+                         {"id": "14141", "exportFilename": "img000000049-2", "title": "", "caption" : ""},
+                         {"id": "14142", "exportFilename": "img000000050-2", "title": "", "caption" : ""},
+                         {"id": "14143", "exportFilename": "img000000051-2", "title": "", "caption" : ""},
+                         {"id": "14144", "exportFilename": "img000000052-2", "title": "", "caption" : ""},
+                         {"id": "14145", "exportFilename": "img000000053-2", "title": "", "caption" : ""},
+                         {"id": "14146", "exportFilename": "img000000054-2", "title": "", "caption" : ""},
+                         {"id": "14147", "exportFilename": "img000000055-2", "title": "", "caption" : ""},
+                         {"id": "14148", "exportFilename": "img000000056-2", "title": "", "caption" : ""},
+                         {"id": "14149", "exportFilename": "img000000057-2", "title": "", "caption" : ""},
+                         {"id": "14150", "exportFilename": "img000000058-2", "title": "", "caption" : ""},
+                         {"id": "14151", "exportFilename": "img000000059-2", "title": "", "caption" : ""},
+                         {"id": "14152", "exportFilename": "img000000060-2", "title": "", "caption" : ""},
+                         {"id": "14153", "exportFilename": "img000000061-2", "title": "", "caption" : ""},
+                         {"id": "14154", "exportFilename": "img000000062-2", "title": "", "caption" : ""},
+                         {"id": "14155", "exportFilename": "img000000063-2", "title": "", "caption" : ""},
+                         {"id": "14156", "exportFilename": "img000000064-2", "title": "", "caption" : ""},
+                         {"id": "14157", "exportFilename": "img000000065-2", "title": "", "caption" : ""},
+                         {"id": "14158", "exportFilename": "img000000066-2", "title": "", "caption" : ""},
+                         {"id": "14159", "exportFilename": "img000000067-2", "title": "", "caption" : ""},
+                         {"id": "14160", "exportFilename": "img000000068-2", "title": "", "caption" : ""},
+                         {"id": "14161", "exportFilename": "img000000069-2", "title": "", "caption" : ""},
+                         {"id": "14162", "exportFilename": "img000000070-2", "title": "", "caption" : ""},
+                         {"id": "14163", "exportFilename": "img000000071-2", "title": "", "caption" : ""},
+                         {"id": "14164", "exportFilename": "img000000072-2", "title": "", "caption" : ""},
+                         {"id": "14165", "exportFilename": "img000000073-2", "title": "", "caption" : ""},
+                         {"id": "14166", "exportFilename": "img000000074-2", "title": "", "caption" : ""},
+                         {"id": "14167", "exportFilename": "img000000075-2", "title": "", "caption" : ""},
+                         {"id": "14168", "exportFilename": "img000000076-2", "title": "", "caption" : ""},
+                         {"id": "14169", "exportFilename": "img000000077-2", "title": "", "caption" : ""},
+                         {"id": "14170", "exportFilename": "img000000078-2", "title": "", "caption" : ""},
+                         {"id": "14171", "exportFilename": "img000000079-2", "title": "", "caption" : ""},
+                         {"id": "14172", "exportFilename": "img000000080-2", "title": "", "caption" : ""},
+                         {"id": "14173", "exportFilename": "img000000081-2", "title": "", "caption" : ""},
+                         {"id": "14174", "exportFilename": "img000000082-2", "title": "", "caption" : ""},
+                         {"id": "14175", "exportFilename": "img000000083-2", "title": "", "caption" : ""},
+                         {"id": "14176", "exportFilename": "img000000084-2", "title": "", "caption" : ""},
+                         {"id": "14177", "exportFilename": "img000000085-2", "title": "", "caption" : ""},
+                         {"id": "14178", "exportFilename": "img000000086-2", "title": "", "caption" : ""},
+                         {"id": "14179", "exportFilename": "img000000087-2", "title": "", "caption" : ""},
+                         {"id": "14180", "exportFilename": "img000000088-2", "title": "", "caption" : ""},
+                         {"id": "14181", "exportFilename": "img000000089-2", "title": "", "caption" : ""},
+                         {"id": "14182", "exportFilename": "img000000090-2", "title": "", "caption" : ""},
+                         {"id": "14183", "exportFilename": "img000000091-2", "title": "", "caption" : ""},
+                         {"id": "14184", "exportFilename": "img000000092-2", "title": "", "caption" : ""},
+                         {"id": "14185", "exportFilename": "img000000093-2", "title": "", "caption" : ""},
+                         {"id": "14186", "exportFilename": "img000000094-2", "title": "", "caption" : ""},
+                         {"id": "14187", "exportFilename": "img000000095-2", "title": "", "caption" : ""},
+                         {"id": "14188", "exportFilename": "img000000096-2", "title": "", "caption" : ""},
+                         {"id": "14189", "exportFilename": "img000000097-2", "title": "", "caption" : ""},
+                         {"id": "14190", "exportFilename": "img000000098-2", "title": "", "caption" : ""},
+                         {"id": "14191", "exportFilename": "img000000099-2", "title": "", "caption" : ""},
+                                    ]        </script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="assets/js/libs/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>
