@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title description">
+  <title id="title">Computational artist placeholder</title>
+  <desc id="description">Abstract geometric portrait with colorful connected shapes.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="figure" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22d3ee"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#background)"/>
+  <g fill="none" stroke="#67e8f9" stroke-width="8" opacity=".55">
+    <path d="M100 140 330 270 510 120 740 250 1040 110"/>
+    <path d="M90 650 310 520 520 690 760 500 1090 650"/>
+    <path d="M170 400 390 300 600 420 820 280 1040 420"/>
+  </g>
+  <g fill="#f8fafc">
+    <circle cx="100" cy="140" r="18"/>
+    <circle cx="330" cy="270" r="18"/>
+    <circle cx="510" cy="120" r="18"/>
+    <circle cx="740" cy="250" r="18"/>
+    <circle cx="1040" cy="110" r="18"/>
+    <circle cx="90" cy="650" r="18"/>
+    <circle cx="310" cy="520" r="18"/>
+    <circle cx="520" cy="690" r="18"/>
+    <circle cx="760" cy="500" r="18"/>
+    <circle cx="1090" cy="650" r="18"/>
+  </g>
+  <circle cx="600" cy="330" r="145" fill="url(#figure)"/>
+  <path d="M330 800c25-185 127-290 270-290s245 105 270 290Z" fill="url(#figure)"/>
+  <g fill="#111827" opacity=".75">
+    <circle cx="550" cy="315" r="16"/>
+    <circle cx="650" cy="315" r="16"/>
+    <path d="M535 385c42 36 88 36 130 0-16 62-114 62-130 0Z"/>
+  </g>
+  <text x="600" y="745" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="38" font-weight="700" text-anchor="middle">ARTIST IMAGE</text>
+</svg>
