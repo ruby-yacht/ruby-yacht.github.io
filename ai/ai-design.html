@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A curated reading list on artificial intelligence for designers: uses, abuses, methods, and responsibilities.">
+  <title>AI for Design · Uses, Abuses, and Understanding</title>
+  <style>
+    :root{--ink:#111317;--paper:#f2f0e9;--white:#fffef8;--muted:#62666b;--line:#c9c8c1;--blue:#2559f0;--acid:#c9ff44;--coral:#ff765f}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.45}
+    a{color:inherit}
+    .masthead{min-height:72vh;display:grid;align-items:end;background:var(--blue);color:white;padding:32px max(24px,calc((100vw - 1180px)/2))}
+    .masthead-inner{max-width:1060px;padding:74px 0 54px}
+    .eyebrow{display:inline-block;margin:0 0 24px;padding:6px 10px;background:var(--acid);color:var(--ink);font-size:.72rem;font-weight:900;letter-spacing:.12em;text-transform:uppercase}
+    h1{margin:0;font-size:clamp(4rem,11vw,9.6rem);font-weight:900;letter-spacing:-.075em;line-height:.82}
+    .deck{max-width:790px;margin:32px 0 0;font-size:clamp(1.05rem,2vw,1.35rem);color:#dfe6ff}
+    .masthead-meta{display:flex;gap:32px;margin-top:38px;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .masthead-meta strong{color:var(--acid)}
+    .nav-wrap{position:sticky;z-index:20;top:0;background:color-mix(in srgb,var(--paper) 95%,transparent);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+    .nav{width:min(1180px,calc(100% - 32px));margin:auto;display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:18px;align-items:center;padding:13px 0}
+    #search{width:100%;border:1px solid var(--line);border-radius:0;background:var(--white);color:var(--ink);font:inherit;padding:11px 13px}
+    #search:focus{outline:3px solid var(--acid);border-color:var(--ink)}
+    .chapter-links{display:flex;gap:7px}
+    .chapter-links a{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--ink);border-radius:50%;font-size:.72rem;font-weight:900;text-decoration:none}
+    .chapter-links a:hover{background:var(--ink);color:white}
+    main{width:min(1180px,calc(100% - 32px));margin:auto;padding-bottom:100px}
+    .position{display:grid;grid-template-columns:220px 1fr;gap:52px;padding:58px 0;border-bottom:3px solid var(--ink)}
+    .position h2{margin:0;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+    .position p{max-width:820px;margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.35rem,3vw,2.25rem);line-height:1.2}
+    .chapter{padding:72px 0 10px;scroll-margin-top:70px}
+    .chapter-heading{display:grid;grid-template-columns:95px 1fr;gap:18px;align-items:start;padding-bottom:25px;border-bottom:3px solid var(--ink)}
+    .chapter-heading>span{color:var(--blue);font-size:3rem;font-weight:900;letter-spacing:-.06em;line-height:1}
+    .chapter-heading h2{margin:0;font-size:clamp(2.1rem,5vw,4.4rem);letter-spacing:-.055em;line-height:.95}
+    .chapter-heading p{max-width:650px;margin:13px 0 0;color:var(--muted)}
+    .reading{display:grid;grid-template-columns:48px minmax(0,1fr) 70px;gap:18px;padding:24px 0;border-bottom:1px solid var(--line)}
+    .reading[hidden]{display:none}
+    .index{padding-top:5px;color:#8c8d8a;font:700 .72rem/1 ui-monospace,SFMono-Regular,Menlo,monospace}
+    .labels{display:flex;gap:7px;margin-bottom:7px}
+    .labels span{padding:3px 7px;background:var(--acid);font-size:.61rem;font-weight:900;letter-spacing:.055em;text-transform:uppercase}
+    .labels span+span{background:#dfe4e8}
+    h3{margin:0;font-size:clamp(1.15rem,2.1vw,1.52rem);line-height:1.22}
+    h3 a{text-decoration-thickness:1px;text-decoration-color:transparent;text-underline-offset:5px}
+    h3 a:hover{color:var(--blue);text-decoration-color:currentColor}
+    h3 a span{color:var(--blue);font-size:.82em}
+    .author{margin:7px 0 0;color:var(--muted);font-size:.78rem}
+    .description{max-width:760px;margin:10px 0 0;color:#4f555a;font-size:.91rem}
+    time{padding-top:4px;color:var(--muted);font-size:.7rem;font-weight:800;text-align:right}
+    .empty{display:none;margin:60px 0;padding:50px;background:var(--white);text-align:center;color:var(--muted)}
+    footer{margin-top:80px;padding:30px 0;border-top:3px solid var(--ink);color:var(--muted);font-size:.78rem}
+    @media(max-width:780px){
+      .masthead{min-height:62vh}.nav{grid-template-columns:1fr}.chapter-links{display:none}
+      .position{grid-template-columns:1fr;gap:16px}.chapter-heading{grid-template-columns:60px 1fr}
+      .reading{grid-template-columns:30px minmax(0,1fr);gap:10px}.reading time{grid-column:2;text-align:left}.chapter{padding-top:54px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-inner">
+      <p class="eyebrow">A designer’s critical field guide</p>
+      <h1>AI:<br>use / abuse</h1>
+      <p class="deck">A path through how AI works, what designers can make with it, and the labor, bias, extraction, persuasion, and ownership hidden behind the interface.</p>
+      <div class="masthead-meta"><span><strong>37</strong> readings</span><span><strong>5</strong> chapters</span><span>general → critical</span></div>
+    </div>
+  </header>
+  <div class="nav-wrap">
+    <nav class="nav" aria-label="Page navigation">
+      <input id="search" type="search" placeholder="Search the reading list…" autocomplete="off">
+      <div class="chapter-links"><a href="#models" aria-label="Build useful mental models">01</a><a href="#practice" aria-label="Design with AI">02</a><a href="#culture" aria-label="Read the cultural history">03</a><a href="#power" aria-label="Trace data, labor, and power">04</a><a href="#governance" aria-label="Negotiate authorship and refusal">05</a></div>
+    </nav>
+  </div>
+  <main>
+    <section class="position">
+      <h2>Editorial position</h2>
+      <p>AI is not a neutral design tool. It is simultaneously a medium, an infrastructure, a labor arrangement, and a system for redistributing authorship and power.</p>
+    </section>
+    <section class="chapter" id="models">
+      <div class="chapter-heading">
+        <span>01</span>
+        <div><h2>Build useful mental models</h2><p>Understand enough of the machinery to question outputs, constraints, and claims.</p></div>
+      </div>
+      <div class="readings">
+        <article class="reading" data-search="but what is a neural network? | chapter 1, deep learning 3blue1brown a visual introduction to neural networks that makes layers, weights, and learning legible. foundation build useful mental models">
+          <span class="index">01</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Foundation</span><span>Video</span></div>
+            <h3><a href="https://www.youtube.com/watch?v=aircAruvnKk">But what is a neural network? | Chapter 1, Deep learning <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">3Blue1Brown</p>
+            <p class="description">A visual introduction to neural networks that makes layers, weights, and learning legible.</p>
+          </div>
+          <time>2017</time>
+        </article>
+        <article class="reading" data-search="what’s really going on in machine learning? some minimal models  small machine-learning models reveal the mechanisms that larger systems often hide behind scale. foundation build useful mental models">
+          <span class="index">02</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Foundation</span><span>Web resource</span></div>
+            <h3><a href="https://writings.stephenwolfram.com/2024/08/whats-really-going-on-in-machine-learning-some-minimal-models/">What’s Really Going On in Machine Learning? Some Minimal Models <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Small machine-learning models reveal the mechanisms that larger systems often hide behind scale.</p>
+          </div>
+          <time>2024</time>
+        </article>
+        <article class="reading" data-search="a jargon-free explanation of how ai large language models work timothy b. lee a jargon-free explanation of tokens, training, prediction, and large language model behavior. foundation build useful mental models">
+          <span class="index">03</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Foundation</span><span>Web resource</span></div>
+            <h3><a href="https://arstechnica.com/science/2023/07/a-jargon-free-explanation-of-how-ai-large-language-models-work/">A jargon-free explanation of how AI large language models work <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Timothy B. Lee</p>
+            <p class="description">A jargon-free explanation of tokens, training, prediction, and large language model behavior.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="what are transformer models and how do they work?  an accessible account of transformers, attention, parallel processing, and why the architecture matters. foundation build useful mental models">
+          <span class="index">04</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Foundation</span><span>Web resource</span></div>
+            <h3><a href="https://cohere.com/llmu/what-are-transformer-models">What Are Transformer Models and How Do They Work? <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">An accessible account of transformers, attention, parallel processing, and why the architecture matters.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="how diffusion models work: the math from scratch sergios karagiannakos , nikolas adaloglou a mathematical but approachable walkthrough of the noising and denoising behind diffusion models. deep dive build useful mental models">
+          <span class="index">05</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Deep dive</span><span>Web resource</span></div>
+            <h3><a href="https://theaisummer.com/diffusion-models/">How diffusion models work: the math from scratch <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Sergios Karagiannakos , Nikolas Adaloglou</p>
+            <p class="description">A mathematical but approachable walkthrough of the noising and denoising behind diffusion models.</p>
+          </div>
+          <time>2022</time>
+        </article>
+        <article class="reading" data-search="the illustrated stable diffusion jay alammar an illustrated tour of text encoders, latent space, diffusion, and image generation. visual guide build useful mental models">
+          <span class="index">06</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Visual guide</span><span>Web resource</span></div>
+            <h3><a href="https://jalammar.github.io/illustrated-stable-diffusion/">The Illustrated Stable Diffusion <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Jay Alammar</p>
+            <p class="description">An illustrated tour of text encoders, latent space, diffusion, and image generation.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="chatgpt is a blurry jpeg of the web ted chiang a memorable compression analogy for understanding both chatgpt’s fluency and its confident fabrications. critical model build useful mental models">
+          <span class="index">07</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Critical model</span><span>Magazine</span></div>
+            <h3><a href="https://www.newyorker.com/tech/annals-of-technology/chatgpt-is-a-blurry-jpeg-of-the-web">ChatGPT Is a Blurry JPEG of the Web <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Ted Chiang</p>
+            <p class="description">A memorable compression analogy for understanding both ChatGPT’s fluency and its confident fabrications.</p>
+          </div>
+          <time>2023</time>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="practice">
+      <div class="chapter-heading">
+        <span>02</span>
+        <div><h2>Design with AI</h2><p>Explore AI as material, collaborator, prototyping system, and contested creative partner.</p></div>
+      </div>
+      <div class="readings">
+        <article class="reading" data-search="the practical guide to using ai to do stuff ethan mollick a pragmatic guide to using generative ai while testing where it helps and fails. working method design with ai">
+          <span class="index">08</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Working method</span><span>Web resource</span></div>
+            <h3><a href="https://www.oneusefulthing.org/p/the-practical-guide-to-using-ai-to?utm_campaign=post">The practical guide to using AI to do stuff <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Ethan Mollick</p>
+            <p class="description">A pragmatic guide to using generative AI while testing where it helps and fails.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="beginner&#39;s guide to comfyui - stable diffusion art  a hands-on introduction to node-based image workflows with comfyui and stable diffusion. tool design with ai">
+          <span class="index">09</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Tool</span><span>Essay</span></div>
+            <h3><a href="https://stable-diffusion-art.com/comfyui/">Beginner&#39;s Guide to ComfyUI - Stable Diffusion Art <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">A hands-on introduction to node-based image workflows with ComfyUI and Stable Diffusion.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="tensorflow.js | machine learning for javascript developers  official resources for running and training machine-learning models directly in the browser. creative coding design with ai">
+          <span class="index">10</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Creative coding</span><span>Web resource</span></div>
+            <h3><a href="https://www.tensorflow.org/js">TensorFlow.js | Machine Learning for JavaScript Developers <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Official resources for running and training machine-learning models directly in the browser.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="a beginner&#39;s guide to machine learning with ml5.js the coding train an approachable introduction to ml5.js for designers and artists new to machine learning. creative coding design with ai">
+          <span class="index">11</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Creative coding</span><span>Video</span></div>
+            <h3><a href="https://www.youtube.com/watch?v=jmznx0Q1fP0">A Beginner&#39;s Guide to Machine Learning with ml5.js <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">The Coding Train</p>
+            <p class="description">An approachable introduction to ml5.js for designers and artists new to machine learning.</p>
+          </div>
+          <time>2018</time>
+        </article>
+        <article class="reading" data-search="creative practitioners collaborating with ai  creative practitioners describe collaboration, authorship, uncertainty, and negotiation with ai systems. case studies design with ai">
+          <span class="index">12</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Case studies</span><span>Web resource</span></div>
+            <h3><a href="https://computationalcreativity.net/workshops/practitioners-ai-collab-iccc26/">Creative Practitioners Collaborating With AI <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Creative practitioners describe collaboration, authorship, uncertainty, and negotiation with AI systems.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="typographers in the loop: mapping the typographic latent space of digits as a matter of responsible design joão m. cunha, stig møller hansen, tiago martins, janet rafner, sérgio m. rebelo, jason m. reizner, moritz schwind, alayt issak, sarthak kakkar, sair goetz, nik brown, casper harteveld typographers explore latent space while keeping human judgment and responsibility in the loop. responsible design design with ai">
+          <span class="index">13</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Responsible design</span><span>Conference paper</span></div>
+            <h3><a href="https://ceur-ws.org/Vol-4156/#short5">Typographers in the Loop: Mapping the Typographic Latent Space of Digits as a Matter of Responsible Design <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">João M. Cunha, Stig Møller Hansen, Tiago Martins, Janet Rafner, Sérgio M. Rebelo, Jason M. Reizner, Moritz Schwind, Alayt Issak, Sarthak Kakkar, Sair Goetz, Nik Brown, Casper Harteveld</p>
+            <p class="description">Typographers explore latent space while keeping human judgment and responsibility in the loop.</p>
+          </div>
+          <time>2025</time>
+        </article>
+        <article class="reading" data-search="generative ai in audiovisual arts: creative practices and hybrid authorship joão m. cunha, stig møller hansen, tiago martins, janet rafner, sérgio m. rebelo, jason m. reizner, moritz schwind, ricardo palmieri research into generative ai’s role in audiovisual practice and emerging models of shared authorship. hybrid authorship design with ai">
+          <span class="index">14</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Hybrid authorship</span><span>Conference paper</span></div>
+            <h3><a href="https://ceur-ws.org/Vol-4156/#paper3">Generative AI in Audiovisual Arts: Creative Practices and Hybrid Authorship <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">João M. Cunha, Stig Møller Hansen, Tiago Martins, Janet Rafner, Sérgio M. Rebelo, Jason M. Reizner, Moritz Schwind, Ricardo Palmieri</p>
+            <p class="description">Research into generative AI’s role in audiovisual practice and emerging models of shared authorship.</p>
+          </div>
+          <time>2025</time>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="culture">
+      <div class="chapter-heading">
+        <span>03</span>
+        <div><h2>Read the cultural history</h2><p>Place today’s tools inside longer histories of automation, aesthetics, representation, and creativity.</p></div>
+      </div>
+      <div class="readings">
+        <article class="reading" data-search="artificial aesthetics: a critical guide to artificial intelligence, media and design, chapter 4 (lev manovich): ai and myths of creativity lev manovich connects artificial intelligence to media theory, aesthetics, design history, and cultural power. design theory read the cultural history">
+          <span class="index">15</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Design theory</span><span>Journal article</span></div>
+            <h3><a href="https://www.academia.edu/79409786/Artificial_Aesthetics_A_Critical_Guide_to_Artificial_Intelligence_Media_and_Design_chapter_4_Lev_Manovich_AI_and_Myths_of_Creativity">Artificial Aesthetics: A Critical Guide to Artificial Intelligence, Media and Design, chapter 4 (Lev Manovich): AI and Myths of Creativity <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Lev Manovich</p>
+            <p class="description">Connects artificial intelligence to media theory, aesthetics, design history, and cultural power.</p>
+          </div>
+          <time>2022</time>
+        </article>
+        <article class="reading" data-search="ai aesthetics and the anthropocentric myth of creativity emanuele arielli, lev manovich challenges the human-centered assumptions used to judge machine creativity and artificial aesthetics. aesthetics read the cultural history">
+          <span class="index">16</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Aesthetics</span><span>Journal article</span></div>
+            <h3><a href="https://www.academia.edu/83852399/AI_Aesthetics_and_the_Anthropocentric_Myth_of_Creativity">AI Aesthetics and the Anthropocentric Myth of Creativity <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Emanuele Arielli, Lev Manovich</p>
+            <p class="description">Challenges the human-centered assumptions used to judge machine creativity and artificial aesthetics.</p>
+          </div>
+          <time>2022</time>
+        </article>
+        <article class="reading" data-search="how did a.i. art evolve? here’s a 5,000-year timeline of artists employing artificial intelligence, from the ancient inca to modern-day gans naomi rea a broad timeline placing contemporary ai art within centuries of automated creative practice. history read the cultural history">
+          <span class="index">17</span>
+          <div class="reading-copy">
+            <div class="labels"><span>History</span><span>Web resource</span></div>
+            <h3><a href="https://news.artnet.com/art-world/artificial-intelligence-art-history-2045520">How Did A.I. Art Evolve? Here’s a 5,000-Year Timeline of Artists Employing Artificial Intelligence, From the Ancient Inca to Modern-Day GANs <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Naomi Rea</p>
+            <p class="description">A broad timeline placing contemporary AI art within centuries of automated creative practice.</p>
+          </div>
+          <time>2021</time>
+        </article>
+        <article class="reading" data-search="can: creative adversarial networks, generating &quot;art&quot; by learning about styles and deviating from style norms ahmed elgammal, bingchen liu, mohamed elhoseiny, marian mazzone creative adversarial networks formalize novelty by learning styles and deliberately deviating from them. research read the cultural history">
+          <span class="index">18</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Research</span><span>Preprint</span></div>
+            <h3><a href="http://arxiv.org/abs/1706.07068">CAN: Creative Adversarial Networks, Generating &quot;Art&quot; by Learning About Styles and Deviating from Style Norms <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Ahmed Elgammal, Bingchen Liu, Mohamed Elhoseiny, Marian Mazzone</p>
+            <p class="description">Creative Adversarial Networks formalize novelty by learning styles and deliberately deviating from them.</p>
+          </div>
+          <time>2017</time>
+        </article>
+        <article class="reading" data-search="art has always been artificial louis anslow argues that art has always depended on artificial systems, conventions, tools, and mediation. essay read the cultural history">
+          <span class="index">19</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Essay</span><span>Web resource</span></div>
+            <h3><a href="https://newart.press/p/art-has-always-been-artifical">Art Has Always Been Artificial <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Louis Anslow</p>
+            <p class="description">Argues that art has always depended on artificial systems, conventions, tools, and mediation.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="how artificial intelligence sees art history will fenstermaker examines what machine vision reveals—and distorts—when interpreting the history of art. visual culture read the cultural history">
+          <span class="index">20</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Visual culture</span><span>Web resource</span></div>
+            <h3><a href="https://www.metmuseum.org/perspectives/articles/2019/2/artificial-intelligence-machine-learning-art-authorship">How Artificial Intelligence Sees Art History <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Will Fenstermaker</p>
+            <p class="description">Examines what machine vision reveals—and distorts—when interpreting the history of art.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="critical topics: ai images course  a critical course on ai images spanning representation, labor, ethics, history, and culture. course read the cultural history">
+          <span class="index">21</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Course</span><span>Web resource</span></div>
+            <h3><a href="https://www.cyberneticforests.com/ai-images">Critical Topics: AI Images Course <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">A critical course on AI images spanning representation, labor, ethics, history, and culture.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="power">
+      <div class="chapter-heading">
+        <span>04</span>
+        <div><h2>Trace data, labor, and power</h2><p>Look behind seamless interfaces to the workers, datasets, classifications, and political choices they conceal.</p></div>
+      </div>
+      <div class="readings">
+        <article class="reading" data-search="the exploited labor behind artificial intelligence adrienne williams documents the hidden and frequently precarious human work powering commercial ai systems. labor trace data, labor, and power">
+          <span class="index">22</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Labor</span><span>Journal article</span></div>
+            <h3><a href="https://www.noemamag.com/the-exploited-labor-behind-artificial-intelligence">The Exploited Labor Behind Artificial Intelligence <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Adrienne Williams</p>
+            <p class="description">Documents the hidden and frequently precarious human work powering commercial AI systems.</p>
+          </div>
+          <time>2022</time>
+        </article>
+        <article class="reading" data-search="buzzy ai startup for generating 3d models used cheap human labor joseph cox, jason koebler · shows how a celebrated 3d-generation startup depended on cheap, obscured human production work. labor trace data, labor, and power">
+          <span class="index">23</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Labor</span><span>Web resource</span></div>
+            <h3><a href="https://www.404media.co/kaedim-ai-startup-2d-to-3d-used-cheap-human-labor/">Buzzy AI Startup for Generating 3D Models Used Cheap Human Labor <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Joseph Cox, Jason Koebler ·</p>
+            <p class="description">Shows how a celebrated 3D-generation startup depended on cheap, obscured human production work.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="ai programs exhibit racial and gender biases, research reveals hannah devlin science correspondent an early account of racial and gender bias emerging from training data and model design. bias trace data, labor, and power">
+          <span class="index">24</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Bias</span><span>News</span></div>
+            <h3><a href="https://www.theguardian.com/technology/2017/apr/13/ai-programs-exhibit-racist-and-sexist-biases-research-reveals">AI programs exhibit racial and gender biases, research reveals <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Hannah Devlin Science correspondent</p>
+            <p class="description">An early account of racial and gender bias emerging from training data and model design.</p>
+          </div>
+          <time>2017</time>
+        </article>
+        <article class="reading" data-search="biased ai writing assistants shift users’ attitudes on societal issues sterling williams-ceci, maurice jakesch, advait bhat, kowe kadoma, lior zalmanson, mor naaman evidence that biased writing assistants can quietly shift users’ attitudes on social questions. manipulation trace data, labor, and power">
+          <span class="index">25</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Manipulation</span><span>Journal article</span></div>
+            <h3><a href="https://www.science.org/doi/10.1126/sciadv.adw5578">Biased AI writing assistants shift users’ attitudes on societal issues <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Sterling Williams-Ceci, Maurice Jakesch, Advait Bhat, Kowe Kadoma, Lior Zalmanson, Mor Naaman</p>
+            <p class="description">Evidence that biased writing assistants can quietly shift users’ attitudes on social questions.</p>
+          </div>
+          <time>2026</time>
+        </article>
+        <article class="reading" data-search="on the dangers of stochastic parrots: can language models be too big? 🦜 emily m. bender, timnit gebru, angelina mcmillan-major, shmargaret shmitchell connects language-model scale to environmental costs, documentation failures, stereotypes, and concentrated power. foundational critique trace data, labor, and power">
+          <span class="index">26</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Foundational critique</span><span>Conference paper</span></div>
+            <h3><a href="https://dl.acm.org/doi/10.1145/3442188.3445922">On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜 <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Emily M. Bender, Timnit Gebru, Angelina McMillan-Major, Shmargaret Shmitchell</p>
+            <p class="description">Connects language-model scale to environmental costs, documentation failures, stereotypes, and concentrated power.</p>
+          </div>
+          <time>2021</time>
+        </article>
+        <article class="reading" data-search="paper: stable diffusion “memorizes” some images, sparking privacy concerns benj edwards research showing that diffusion models can memorize training images, complicating privacy and authorship claims. data rights trace data, labor, and power">
+          <span class="index">27</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Data rights</span><span>Web resource</span></div>
+            <h3><a href="https://arstechnica.com/information-technology/2023/02/researchers-extract-training-images-from-stable-diffusion-but-its-difficult/">Paper: Stable Diffusion “memorizes” some images, sparking privacy concerns <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Benj Edwards</p>
+            <p class="description">Research showing that diffusion models can memorize training images, complicating privacy and authorship claims.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="your photos can hear you. ai and machine learning help researchers get audio from still images and silent videos cody mello-klein a striking example of machine learning recovering audio information from silent visual recordings. surveillance trace data, labor, and power">
+          <span class="index">28</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Surveillance</span><span>Web resource</span></div>
+            <h3><a href="https://news.northeastern.edu/2023/09/25/audio-recovery-still-images-silent-videos/">Your photos can hear you. AI and machine learning help researchers get audio from still images and silent videos <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Cody Mello-Klein</p>
+            <p class="description">A striking example of machine learning recovering audio information from silent visual recordings.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="critical ai and design justice: an interview with sasha costanza-chock kristin rose, kate henne, sabelo mhlambi, anand sarwate, sasha costanza-chock sasha costanza-chock connects critical ai practice to participation, accountability, and design justice. design justice trace data, labor, and power">
+          <span class="index">29</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Design justice</span><span>Journal article</span></div>
+            <h3><a href="https://doi.org/10.1215/2834703X-10734036">Critical AI and Design Justice: An Interview with Sasha Costanza-Chock <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Kristin Rose, Kate Henne, Sabelo Mhlambi, Anand Sarwate, Sasha Costanza-Chock</p>
+            <p class="description">Sasha Costanza-Chock connects critical AI practice to participation, accountability, and design justice.</p>
+          </div>
+          <time>2023</time>
+        </article>
+      </div>
+    </section>
+    <section class="chapter" id="governance">
+      <div class="chapter-heading">
+        <span>05</span>
+        <div><h2>Negotiate authorship and refusal</h2><p>Treat copyright, consent, resistance, and governance as design materials—not afterthoughts.</p></div>
+      </div>
+      <div class="readings">
+        <article class="reading" data-search="a new contract for artists in the age of generative ai eryk salvaggio proposes a new social contract for artists working amid generative models and mass data extraction. creator rights negotiate authorship and refusal">
+          <span class="index">30</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Creator rights</span><span>Web resource</span></div>
+            <h3><a href="https://techpolicy.press/a-new-contract-for-artists-in-the-age-of-generative-ai/">A New Contract for Artists in the Age of Generative AI <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Eryk Salvaggio</p>
+            <p class="description">Proposes a new social contract for artists working amid generative models and mass data extraction.</p>
+          </div>
+          <time>2023</time>
+        </article>
+        <article class="reading" data-search="copyright and artificial intelligence | u.s. copyright office  the u.s. copyright office’s evolving policy hub for artificial intelligence and creative ownership. copyright negotiate authorship and refusal">
+          <span class="index">31</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Copyright</span><span>Web resource</span></div>
+            <h3><a href="https://copyright.gov/ai/?loclr=eanco">Copyright and Artificial Intelligence | U.S. Copyright Office <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">The U.S. Copyright Office’s evolving policy hub for artificial intelligence and creative ownership.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="glaze: protecting artists from style mimicry  glaze lets artists disrupt automated style mimicry while preserving how their work appears. resistance negotiate authorship and refusal">
+          <span class="index">32</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Resistance</span><span>Web resource</span></div>
+            <h3><a href="https://glaze.cs.uchicago.edu/">Glaze: Protecting Artists from Style Mimicry <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Glaze lets artists disrupt automated style mimicry while preserving how their work appears.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="nightshade: protecting copyright  nightshade reframes data poisoning as a defensive tool against nonconsensual model training. resistance negotiate authorship and refusal">
+          <span class="index">33</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Resistance</span><span>Web resource</span></div>
+            <h3><a href="https://nightshade.cs.uchicago.edu/whatis.html">Nightshade: Protecting Copyright <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Nightshade reframes data poisoning as a defensive tool against nonconsensual model training.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="this new data poisoning tool lets artists fight back against generative ai  explains how artists can alter training data to make exploitative image models less reliable. resistance negotiate authorship and refusal">
+          <span class="index">34</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Resistance</span><span>Web resource</span></div>
+            <h3><a href="https://www.technologyreview.com/2023/10/23/1082189/data-poisoning-artists-fight-generative-ai/">This new data poisoning tool lets artists fight back against generative AI <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Explains how artists can alter training data to make exploitative image models less reliable.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="generative ai: ethical, legal, and technical questions santa clara university a compact map of the ethical, legal, and technical questions surrounding generative ai. governance negotiate authorship and refusal">
+          <span class="index">35</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Governance</span><span>Web resource</span></div>
+            <h3><a href="https://www.scu.edu/ethics/internet-ethics-blog/generative-ai-ethical-legal-and-technical-questions/">Generative AI: Ethical, Legal, and Technical Questions <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Santa Clara University</p>
+            <p class="description">A compact map of the ethical, legal, and technical questions surrounding generative AI.</p>
+          </div>
+          <time>Undated</time>
+        </article>
+        <article class="reading" data-search="challenging the myths of generative ai | techpolicy.press eryk salvaggio challenges common narratives about generative ai’s novelty, inevitability, autonomy, and economic value. myth checking negotiate authorship and refusal">
+          <span class="index">36</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Myth checking</span><span>Web resource</span></div>
+            <h3><a href="https://techpolicy.press/challenging-the-myths-of-generative-ai">Challenging The Myths of Generative AI | TechPolicy.Press <span aria-hidden="true">↗</span></a></h3>
+            <p class="author">Eryk Salvaggio</p>
+            <p class="description">Challenges common narratives about generative AI’s novelty, inevitability, autonomy, and economic value.</p>
+          </div>
+          <time>2024</time>
+        </article>
+        <article class="reading" data-search="why transformative artificial intelligence is really, really hard to achieve  explains why transformative-ai claims deserve scrutiny rather than automatic acceptance by designers. futures negotiate authorship and refusal">
+          <span class="index">37</span>
+          <div class="reading-copy">
+            <div class="labels"><span>Futures</span><span>Web resource</span></div>
+            <h3><a href="https://thegradient.pub/why-transformative-artificial-intelligence-is-really-really-hard-to-achieve/">Why transformative artificial intelligence is really, really hard to achieve <span aria-hidden="true">↗</span></a></h3>
+            
+            <p class="description">Explains why transformative-AI claims deserve scrutiny rather than automatic acceptance by designers.</p>
+          </div>
+          <time>2023</time>
+        </article>
+      </div>
+    </section>
+    <p id="empty" class="empty">No readings match that search.</p>
+    <footer>Curated from the local Zotero <em>ai</em> collection. Links lead directly to their original sources. Selection favors durable concepts and contrasting perspectives over comprehensiveness.</footer>
+  </main>
+  <script>
+    const search=document.querySelector('#search');
+    const readings=[...document.querySelectorAll('.reading')];
+    const chapters=[...document.querySelectorAll('.chapter')];
+    const empty=document.querySelector('#empty');
+    search.addEventListener('input',()=>{
+      const query=search.value.trim().toLowerCase();
+      let visible=0;
+      for(const reading of readings){
+        reading.hidden=query&&!reading.dataset.search.includes(query);
+        if(!reading.hidden)visible++;
+      }
+      for(const chapter of chapters){
+        const any=[...chapter.querySelectorAll('.reading')].some(reading=>!reading.hidden);
+        chapter.hidden=!any;
+      }
+      empty.style.display=visible?'none':'block';
+    });
+  </script>
+</body>
+</html>
+
